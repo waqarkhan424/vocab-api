@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "baseUrl": ".",
+    "paths": { "@/*": ["./*"] },
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",          //  add this
+    "jsxImportSource": "react"  //  for React 18/Next.js
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
+}

@@ -57,7 +57,7 @@ export async function getVocabPage({
           topic: 1
         }
       })
-      .sort({ word: 1 })
+      // Removed alphabetical sort so results are NOT grouped A→Z
       .skip(skip)
       .limit(take)
       .toArray(),

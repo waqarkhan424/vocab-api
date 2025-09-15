@@ -33,7 +33,12 @@ export async function getVocabPage({
   const db = await getDb();
 
   const where: any = {};
-  if (topic && topic !== "all") where.topic = topic;
+  const isGlobalSearch = q.trim().length > 0;
+
+  // 🔑 Global search UX: if user typed something, search across ALL topics
+  if (!isGlobalSearch && topic && topic !== "all") {
+    where.topic = topic;
+  }
 
   if (q) {
     // Correctly escape regex special chars in the query
@@ -57,7 +62,7 @@ export async function getVocabPage({
           topic: 1
         }
       })
-      // Removed alphabetical sort so results are NOT grouped A→Z
+      // Note: no alphabetical sort -> avoids A→Z grouping
       .skip(skip)
       .limit(take)
       .toArray(),
